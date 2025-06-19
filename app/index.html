@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de connexion</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        form { display: flex; align-items: center; gap: 10px; }
+        #message { margin-top: 20px; color: green; }
+        #error { margin-top: 20px; color: red; }
+    </style>
+</head>
+<body>
+    <h2>Connexion</h2>
+    <form id="loginForm">
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit">Se connecter</button>
+    </form>
+    <div id="message"></div>
+    <div id="error"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("loginForm");
+        const messageDiv = document.getElementById("message");
+        const errorDiv = document.getElementById("error");
+        form.addEventListener("submit", async function(e) {
+          e.preventDefault();
+          messageDiv.textContent = "";
+          errorDiv.textContent = "";
+          const nom = document.getElementById("username").value;
+          const motdepasse = document.getElementById("password").value;
+          try {
+            const res = await fetch("http://localhost:3000/api/ajouter", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ nom, motdepasse })
+            });
+            if (!res.ok) {
+              const err = await res.text();
+              throw new Error("Erreur serveur: " + err);
+            }
+            let data = {};
+            try {
+              data = await res.json();
+            } catch {
+              throw new Error("Réponse du serveur invalide");
+            }
+            messageDiv.textContent = data.message || "Succès";
+            form.reset();
+          } catch (err) {
+            errorDiv.textContent = err.message;
+          }
+        });
+      });
+    </script>
+</body>
+</html>
