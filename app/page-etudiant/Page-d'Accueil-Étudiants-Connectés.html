@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EtuConnect - Plateforme pour étudiants</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#5a67d8',secondary:'#4c51bf'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 min-h-screen">
+    <!-- Hero Section with Netflix-like Background -->
+    <div class="relative h-screen w-full overflow-hidden">
+        <div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20university%20campus%20with%20diverse%20students%20studying%20together%2C%20digital%20technology%20integration%2C%20vibrant%20atmosphere%2C%20blurred%20background%20with%20soft%20bokeh%20lights%2C%20professional%20high-quality%20photography%2C%20cinematic%20lighting&width=1920&height=1080&seq=1&orientation=landscape');">
+        </div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        
+        <!-- Navigation -->
+        <nav class="relative z-10 px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-white text-3xl font-['Pacifico']">CareerConnect</span>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-white hover:text-primary transition-colors">Accueil</a>
+                <a href="#" class="text-white hover:text-primary transition-colors">Departement</a>
+                <a href="#" class="text-white hover:text-primary transition-colors">offres</a>
+                <a href="#" class="text-white hover:text-primary transition-colors">etudiant</a>
+                <a href="#" class="text-white hover:text-primary transition-colors">entreprise</a>
+            </div>
+        </nav>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 h-[calc(100vh-80px)] flex items-center">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">Bienvenue sur CareerConnect</h1>
+                    <p class="text-xl text-gray-200 mb-8">La meilleure  plateforme qui relie les etudiants au entreprises avec un suivit generale et propose des formation pour les jeunes ingenieurs ;des stages wn entreprises et des propositions d'emploie etudiants et entrprises tous unis .</p>
+                        <button class="px-8 py-3 bg-white text-gray-900 text-lg font-medium rounded-button hover:bg-gray-100 transition-colors flex items-center justify-center whitespace-nowrap">
+                            <span class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-play-circle-line ri-lg"></i>
+                            </span>
+                            Voir la démo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Pourquoi choisir CareerConnect ?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Notre plateforme offre une expérience complète pour les étudiants modernes, combinant collaboration, organisation et apprentissage.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-lg custom-shadow transition-all">
+                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="ri-team-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Collaboration en temps réel</h3>
+                    <p class="text-gray-600">Travaillez sur des projets avec vos camarades, partagez des documents et communiquez instantanément.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-lg custom-shadow transition-all">
+                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="ri-calendar-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">stage</h3>
+                    <p class="text-gray-600">trouver le stage qui vous convient en fonction de vos competence actuelle.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-lg custom-shadow transition-all">
+                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="ri-book-open-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Ressources pédagogiques</h3>
+                    <p class="text-gray-600">Accédez à une bibliothèque de cours, tutoriels et matériels d'étude pour améliorer votre apprentissage.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white p-8 rounded-lg custom-shadow transition-all">
+                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="ri-chat-3-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Forums de discussion</h3>
+                    <p class="text-gray-600">Échangez avec d'autres étudiants, posez des questions et partagez vos connaissances.</p>
+                </div>
+                <!-- Feature 5-->
+                <div class="feature-card bg-white p-8 rounded-lg custom-shadow transition-all">
+                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="ri-device-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Multi-plateforme</h3>
+                    <p class="text-gray-600">Utilisez carrerconnect sur tous vos appareils, avec une synchronisation parfaite de vos données.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Choisissez votre profil</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Que vous soyez étudiant à la recherche d'opportunités ou une entreprise cherchant des talents, nous avons la solution adaptée à vos besoins.
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+                        <i class="ri-user-line text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Je suis étudiant</h3>
+                    <p class="text-gray-600 mb-6">
+                        Accédez à des milliers d'offres de stages et d'emplois. Créez votre profil et laissez notre IA vous connecter aux meilleures opportunités.
+                    </p>
+                    <a href="Page-1.html">
+                     <button class="w-full px-6 py-3 text-white bg-primary hover:bg-primary/90 font-medium !rounded-button">
+                         Consulter mon profil étudiant
+                      </button>
+                    </a>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full mb-6">
+                        <i class="ri-building-line text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Je suis une entreprise</h3>
+                    <p class="text-gray-600 mb-6">
+                        Trouvez les meilleurs talents pour votre entreprise. Publiez vos offres et utilisez notre technologie IA pour identifier les candidats idéaux.
+                    </p>
+                    <a href="Créer-un-Profil-Utilisateur.html">
+                        <button class="w-full px-6 py-3 text-white bg-secondary hover:bg-secondary/90 font-medium !rounded-button">
+                          Créer mon profil entreprise
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Ce que disent nos utilisateurs</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Découvrez comment EtuConnect transforme l'expérience étudiante à travers le monde.</p>
+            </div>
+            
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                                <i class="ri-user-line text-xl text-gray-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">wandji ndjiyou Adan</h4>
+                                <p class="text-sm text-gray-600">Étudiant en Tronc commun</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">
+                            "Grâce à ConnectTalent, j'ai trouvé un stage passionnant qui correspond parfaitement à mes aspirations professionnelles."
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                                <i class="ri-user-line text-xl text-gray-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Toutou Caleb</h4>
+                                <p class="text-sm text-gray-600">Développeur</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">
+                            "L'algorithme de matching est impressionnant. J'ai reçu des propositions parfaitement adaptées à mon profil."
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                                <i class="ri-user-line text-xl text-gray-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">MR wandji</h4>
+                                <p class="text-sm text-gray-600">RH chez TechCorp</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">
+                            "Un outil indispensable pour notre recrutement. La qualité des profils et la rapidité du processus sont remarquables."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div>
+                    <h3 class="text-5xl font-bold text-primary mb-2">1</h3>
+                    <p class="text-xl text-gray-600">Universités partenaires</p>
+                </div>
+                <div>
+                    <h3 class="text-5xl font-bold text-primary mb-2">15</h3>
+                    <p class="text-xl text-gray-600">Étudiants actifs</p>
+                </div>
+                <div>
+                    <h3 class="text-5xl font-bold text-primary mb-2">50%</h3>
+                    <p class="text-xl text-gray-600">Taux de satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary bg-opacity-5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Prêt à transformer votre expérience étudiante ?</h2>
+                    <p class="text-xl text-gray-600 mb-8">Rejoignez des maintenants connecter-vous gratuitement et commencez dès aujourd'hui.</p>a
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="px-8 py-3 bg-primary text-white text-lg font-medium rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">Se connecter</button>
+                        <button class="px-8 py-3 bg-white text-gray-900 text-lg font-medium border border-gray-300 rounded-button hover:bg-gray-50 transition-colors whitespace-nowrap">En savoir plus</button>
+                    </div>
+                </div>
+                <div class="lg:w-2/5">
+                    <div class="bg-white p-8 rounded-lg custom-shadow">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Recevez notre newsletter</h3>
+                        <p class="text-gray-600 mb-6">Restez informé des dernières fonctionnalités et mises à jour de carrerconnect.</p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <div class="relative flex-grow">
+                                <input type="email" placeholder="Votre adresse e-mail" class="w-full px-4 py-3 border border-gray-300 rounded-button text-gray-700 focus:border-primary transition-colors">
+                            </div>
+                            <button class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">S'abonner</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-2xl font-['Pacifico'] mb-6">carrerconnect</h3>
+                    <p class="text-gray-400 mb-6">La plateforme qui connecte tous les étudiants pour une expérience d'apprentissage collaborative et enrichissante.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-facebook-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-twitter-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-instagram-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-linkedin-fill ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Liens rapides</h4>
+                    <ul class="space-y-3">
+                       <li><a href="#" class="text-white hover:text-primary transition-colors">Accueil</a></li>
+                        <li><a href="#" class="text-white hover:text-primary transition-colors">Departement</a></li>
+                        <li><a href="#" class="text-white hover:text-primary transition-colors">offres</a></li>
+                        <li><a href="#" class="text-white hover:text-primary transition-colors">etudiant</a></li>
+                        <li><a href="#" class="text-white hover:text-primary transition-colors">entreprise</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Ressources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Centre d'aide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Tutoriels</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Webinaires</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Développeurs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">adanwandji@gmail.com</li>
+                        <li class="text-gray-400">+(237) 651 52 65 85 </li>
+                        <li class="text-gray-400">Campus17 logbessou Douala;cameroun</li>
+                    </ul>
+                </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 EtuConnect. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Conditions d'utilisation</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script id="mobileMenuScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality could be added here if needed
+        });
+    </script>
+</body>
+</html>

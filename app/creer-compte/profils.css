@@ -1,0 +1,128 @@
+/* Fond général */
+body {
+  background: #f8f9fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Conteneur principal */
+main {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(44, 62, 80, 0.08);
+  padding: 40px 32px 32px 32px;
+  width: 480px;
+  margin: 60px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Titre */
+main h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #22223b;
+  text-align: left;
+}
+
+/* Formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+/* Labels */
+form label {
+  font-size: 1rem;
+  color: #4b4b6b;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* Inputs et select */
+form input,
+form select {
+  padding: 10px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f6f8fa;
+  transition: border 0.2s;
+  outline: none;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #6c63ff;
+  background: #fff;
+}
+
+/* Bouton */
+form button[type="submit"] {
+  margin-top: 12px;
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+form button[type="submit"]:hover {
+  background: #5548c8;
+}
+
+/* Message de retour */
+main p {
+  color: #6c63ff;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 24px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  main {
+    width: 98vw;
+    padding: 16px 4vw;
+  }
+}
+/* Ajoute à la fin de profils.css */
+.stepper {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+.step {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+.step.active {
+  background: #6c63ff;
+  color: #fff;
+  box-shadow: 0 2px 8px #6c63ff33;
+}
+.step-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+}
