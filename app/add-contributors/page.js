@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import "./ajoutercontrib.css"
 
 export default function AjouterContributeur() {
   const [formData, setFormData] = useState({

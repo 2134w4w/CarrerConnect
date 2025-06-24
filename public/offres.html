@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offres de Stage</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.search-input:focus {
+outline: none;
+box-shadow: 0 0 0 2px rgba(87, 181, 231, 0.2);
+}
+.custom-checkbox {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+margin-right: 8px;
+}
+.custom-checkbox input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #e5e7eb;
+border-radius: 4px;
+transition: all 0.2s ease;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #3b82f6;
+border-color: #3b82f6;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 6px;
+top: 2px;
+width: 6px;
+height: 12px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.price-range {
+-webkit-appearance: none;
+appearance: none;
+width: 100%;
+height: 6px;
+border-radius: 5px;
+background: #e5e7eb;
+outline: none;
+}
+.price-range::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #3b82f6;
+cursor: pointer;
+border: 2px solid #fff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.price-range::-moz-range-thumb {
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #3b82f6;
+cursor: pointer;
+border: 2px solid #fff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 44px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e5e7eb;
+transition: .4s;
+border-radius: 24px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+.custom-switch input:checked + .switch-slider {
+background-color: #3b82f6;
+}
+.custom-switch input:checked + .switch-slider:before {
+transform: translateX(20px);
+}
+.offer-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.offer-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.pagination-button {
+transition: all 0.2s ease;
+}
+.pagination-button:hover:not(.active) {
+background-color: #f3f4f6;
+}
+</style>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#f59e0b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center">
+<h1 class="text-2xl font-['Pacifico'] text-primary">logo</h1>
+<nav class="hidden md:flex ml-10 space-x-6">
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">Accueil</a>
+<a href="#" class="text-primary font-medium">Offres</a>
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">Catégories</a>
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">À propos</a>
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">Contact</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 cursor-pointer hover:bg-gray-200 transition-colors">
+<i class="ri-search-line ri-lg"></i>
+</div>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 cursor-pointer hover:bg-gray-200 transition-colors">
+<i class="ri-user-line ri-lg"></i>
+</div>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 cursor-pointer hover:bg-gray-200 transition-colors relative">
+<i class="ri-shopping-cart-line ri-lg"></i>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+</div>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 py-8">
+<section class="mb-12">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+<div>
+<h1 class="text-3xl font-bold mb-2">Offres de Stage</h1>
+<p class="text-gray-600">Découvrez nos opportunités de stage pour les étudiants</p>
+</div>
+<div class="mt-4 md:mt-0 flex items-center space-x-3">
+<span class="text-gray-600">Trier par:</span>
+<select class="bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer">
+<option>Plus récent</option>
+<option>Entreprise</option>
+<option>Domaine</option>
+<option>Durée</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Filtres -->
+<div class="lg:w-1/4 bg-white p-6 rounded-lg shadow-sm h-fit">
+<div class="mb-6">
+<div class="relative">
+<input type="text" placeholder="Rechercher une offre..." class="search-input w-full pl-10 pr-4 py-2 border border-gray-300 rounded-button bg-white text-gray-700">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-5 mb-6">
+<h3 class="font-semibold text-lg mb-4">Domaines</h3>
+<div class="space-y-3">
+<label class="flex items-center cursor-pointer">
+<span class="custom-checkbox">
+<input type="checkbox" checked>
+<span class="checkmark"></span>
+</span>
+<span>Tous les domaines</span>
+<span class="ml-auto text-gray-500 text-sm">12</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<span class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</span>
+<span>Développement Web</span>
+<span class="ml-auto text-gray-500 text-sm">6</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<span class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</span>
+<span>Énergies Renouvelables</span>
+<span class="ml-auto text-gray-500 text-sm">4</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<span class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</span>
+<span>Informatique</span>
+<span class="ml-auto text-gray-500 text-sm">8</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<span class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</span>
+<span>Génie Électrique</span>
+<span class="ml-auto text-gray-500 text-sm">3</span>
+</label>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-5 mb-6">
+<h3 class="font-semibold text-lg mb-4">Durée du stage</h3>
+<div class="space-y-3">
+<label class="flex items-center cursor-pointer">
+<span class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</span>
+<span>2-3 mois</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<span class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</span>
+<span>4-6 mois</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<span class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</span>
+<span>6+ mois</span>
+</label>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-5 mb-6">
+<h3 class="font-semibold text-lg mb-4">Type de stage</h3>
+<div class="space-y-3">
+<label class="flex items-center justify-between cursor-pointer">
+<span>Stage rémunéré</span>
+<span class="custom-switch">
+<input type="checkbox" checked>
+<span class="switch-slider"></span>
+</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span>Télétravail possible</span>
+<span class="custom-switch">
+<input type="checkbox">
+<span class="switch-slider"></span>
+</span>
+</label>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors !rounded-button whitespace-nowrap">Appliquer les filtres</button>
+</div>
+<!-- Grille d'offres -->
+<div class="lg:w-3/4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Stage 1 -->
+<div class="offer-card bg-white rounded-lg overflow-hidden shadow-sm">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=modern%20office%20workspace%20with%20developers%20working%20on%20computers%2C%20collaborative%20environment%20with%20screens%20showing%20code%20and%20web%20development%20tools%2C%20clean%20and%20professional%20setting&width=400&height=300&seq=1&orientation=landscape" alt="Stage développement web" class="w-full h-48 object-cover object-top">
+<div class="absolute top-3 left-3 bg-primary text-white text-sm font-semibold py-1 px-2 rounded-full">Nouveau</div>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-lg font-semibold">Stage Développement Web</h3>
+<span class="text-sm text-gray-500">Réf: DEV-2025</span>
+</div>
+<div class="mb-3">
+<span class="text-primary font-semibold">TechCorp</span>
+<div class="flex items-center mt-1 text-sm text-gray-600">
+<i class="ri-map-pin-line mr-1"></i>
+<span>Paris, France</span>
+</div>
+</div>
+<p class="text-gray-600 text-sm mb-4">Création d'applications web avec React et Node.js. Stage de 6 mois pour étudiant en informatique, maîtrise de JavaScript requise.</p>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<i class="ri-time-line mr-1"></i>
+<span>6 mois</span>
+</div>
+<span class="text-primary font-semibold">1000€/mois</span>
+</div>
+<button class="w-full bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors !rounded-button whitespace-nowrap">Postuler</button>
+</div>
+</div>
+<!-- Stage 2 -->
+<div class="offer-card bg-white rounded-lg overflow-hidden shadow-sm">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=renewable%20energy%20facility%20with%20solar%20panels%20and%20engineers%20working%20on%20sustainable%20energy%20solutions%2C%20modern%20professional%20environment%20with%20technical%20equipment&width=400&height=300&seq=2&orientation=landscape" alt="Stage énergies renouvelables" class="w-full h-48 object-cover object-top">
+<div class="absolute top-3 left-3 bg-secondary text-white text-sm font-semibold py-1 px-2 rounded-full">Urgent</div>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-lg font-semibold">Stage Énergies Renouvelables</h3>
+<span class="text-sm text-gray-500">Réf: ENR-2025</span>
+</div>
+<div class="mb-3">
+<span class="text-primary font-semibold">GreenEnergy</span>
+<div class="flex items-center mt-1 text-sm text-gray-600">
+<i class="ri-map-pin-line mr-1"></i>
+<span>Lyon, France</span>
+</div>
+</div>
+<p class="text-gray-600 text-sm mb-4">Analyse de données solaires et conception de prototypes. Pour étudiant en génie électrique ou physique.</p>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<i class="ri-time-line mr-1"></i>
+<span>4 mois</span>
+</div>
+<span class="text-primary font-semibold">800€/mois</span>
+</div>
+<button class="w-full bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors !rounded-button whitespace-nowrap">Postuler</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-10 flex flex-col md:flex-row items-center justify-between">
+<p class="text-gray-600 mb-4 md:mb-0">Affichage de 2 sur 12 stages</p>
+<div class="flex items-center space-x-1">
+<button class="pagination-button w-10 h-10 flex items-center justify-center rounded-full text-gray-600 border border-gray-300 !rounded-button whitespace-nowrap">
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="pagination-button w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white active !rounded-button whitespace-nowrap">1</button>
+<button class="pagination-button w-10 h-10 flex items-center justify-center rounded-full text-gray-600 hover:bg-gray-100 !rounded-button whitespace-nowrap">2</button>
+<button class="pagination-button w-10 h-10 flex items-center justify-center rounded-full text-gray-600 hover:bg-gray-100 !rounded-button whitespace-nowrap">3</button>
+<button class="pagination-button w-10 h-10 flex items-center justify-center rounded-full text-gray-600 hover:bg-gray-100 !rounded-button whitespace-nowrap">4</button>
+<button class="pagination-button w-10 h-10 flex items-center justify-center rounded-full text-gray-600 hover:bg-gray-100 !rounded-button whitespace-nowrap">5</button>
+<button class="pagination-button w-10 h-10 flex items-center justify-center rounded-full text-gray-600 border border-gray-300 !rounded-button whitespace-nowrap">
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white pt-12 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+<div>
+<h3 class="text-xl font-['Pacifico'] text-white mb-4">logo</h3>
+<p class="text-gray-400 mb-4">Nous proposons les meilleures offres pour tous vos besoins technologiques. Qualité garantie et service client exceptionnel.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-twitter-x-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-youtube-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accueil</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Offres</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Catégories</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">À propos</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Assistance</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Livraison</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Retours</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Garantie</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Politique de confidentialité</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+<p class="text-gray-400 mb-4">Inscrivez-vous pour recevoir nos dernières offres et promotions.</p>
+<div class="flex mb-4">
+<input type="email" placeholder="Votre email" class="bg-gray-800 text-gray-300 px-4 py-2 rounded-l-button border-none w-full focus:outline-none focus:ring-2 focus:ring-primary/30">
+<button class="bg-primary text-white px-4 py-2 rounded-r-button hover:bg-primary/90 transition-colors !rounded-button whitespace-nowrap">S'inscrire</button>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-gray-400">Paiement sécurisé:</span>
+<div class="flex space-x-2">
+<i class="ri-visa-fill text-xl text-gray-300"></i>
+<i class="ri-mastercard-fill text-xl text-gray-300"></i>
+<i class="ri-paypal-fill text-xl text-gray-300"></i>
+<i class="ri-apple-fill text-xl text-gray-300"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-6 text-center text-gray-500">
+<p>&copy; 2025 logo. Tous droits réservés.</p>
+</div>
+</div>
+</footer>
+<script id="offerCardInteractionScript">
+document.addEventListener('DOMContentLoaded', function() {
+const offerCards = document.querySelectorAll('.offer-card');
+offerCards.forEach(card => {
+card.addEventListener('mouseenter', function() {
+this.classList.add('shadow-md');
+});
+card.addEventListener('mouseleave', function() {
+this.classList.remove('shadow-md');
+});
+});
+});
+</script>
+</body>
+</html>

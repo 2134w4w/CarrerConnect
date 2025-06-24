@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une offre</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#818CF8'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        .progress-bar {
+            position: relative;
+            height: 4px;
+            background-color: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #4F46E5;
+            transition: width 0.3s ease;
+        }
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        .custom-checkbox input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #4F46E5;
+            border-color: #4F46E5;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        .custom-switch input:checked + .switch-slider {
+            background-color: #4F46E5;
+        }
+        .custom-switch input:checked + .switch-slider:before {
+            transform: translateX(24px);
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: #EEF2FF;
+            color: #4F46E5;
+            border-radius: 16px;
+            padding: 4px 12px;
+            margin: 4px;
+            font-size: 14px;
+        }
+        .tag-close {
+            margin-left: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-['Pacifico'] text-primary">CareerConnect</h1>
+                <nav class="hidden md:flex ml-10 space-x-8">
+                    <a href="#" class="text-gray-500 hover:text-gray-900">Tableau de bord</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900">Candidats</a>
+                    <a href="#" class="text-primary font-medium">Offres</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900">Entreprises</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 cursor-pointer">
+                    <i class="ri-notification-3-line"></i>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+                        <span>JD</span>
+                    </div>
+                    <span class="hidden md:inline-block font-medium">Jean Dupont</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex items-center mb-6">
+            <button class="flex items-center text-gray-500 hover:text-gray-700">
+                <div class="w-8 h-8 flex items-center justify-center mr-1">
+                    <i class="ri-arrow-left-line"></i>
+                </div>
+                <span>Retour aux offres</span>
+            </button>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-6 mb-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Créer une nouvelle offre</h1>
+            
+            <div class="mb-8">
+                <div class="flex justify-between mb-2">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full mr-2">
+                            <span>1</span>
+                        </div>
+                        <span class="font-medium">Informations générales</span>
+                    </div>
+                    <span class="text-sm text-gray-500">Étape 1 sur 3</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" style="width: 33.33%"></div>
+                </div>
+            </div>
+
+            <form id="offerForm">
+                <div class="space-y-6">
+                    <!-- Section 1: Informations générales -->
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                            <label for="title" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                Titre de l'offre <span class="text-red-500">*</span>
+                            </label>
+                            <div class="md:col-span-2">
+                                <input type="text" id="title" name="title" class="block w-full border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border" placeholder="Ex: Stage Développement Web" required>
+                                <p class="mt-1 text-sm text-gray-500">Soyez concis et précis pour attirer l'attention des candidats.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                            <label for="type" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                Type d'offre <span class="text-red-500">*</span>
+                            </label>
+                            <div class="md:col-span-2 relative">
+                                <div class="relative">
+                                    <select id="type" name="type" class="block w-full border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border pr-8 appearance-none" required>
+                                        <option value="">Sélectionnez un type</option>
+                                        <option value="stage">Stage</option>
+                                        <option value="alternance">Alternance</option>
+                                        <option value="emploie">CDI</option>
+                                        <option value="cdd">CDD</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                        <div class="w-4 h-4 flex items-center justify-center">
+                                            <i class="ri-arrow-down-s-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                            <label for="company" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                Entreprise <span class="text-red-500">*</span>
+                            </label>
+                            <div class="md:col-span-2">
+                                <input type="text" id="company" name="company" class="block w-full border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border" placeholder="Ex: TechCorp" required>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                            <label for="location" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                Lieu <span class="text-red-500">*</span>
+                            </label>
+                            <div class="md:col-span-2">
+                                <input type="text" id="location" name="location" class="block w-full border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border" placeholder="Ex: yaounde, cameroun" required>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                            <label class="block text-sm font-medium text-gray-700 md:mt-3">
+                                Mode de travail <span class="text-red-500">*</span>
+                            </label>
+                            <div class="md:col-span-2 flex flex-wrap gap-4">
+                                <div class="flex items-center">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="workMode" value="presentiel">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <span>Présentiel</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="workMode" value="hybride">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <span>Hybride</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="workMode" value="remote">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <span>Télétravail</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                            <label for="duration" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                Durée
+                            </label>
+                            <div class="md:col-span-2 flex items-center gap-3">
+                                <input type="number" id="duration" name="duration" class="block w-24 border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border" placeholder="Ex: 6">
+                                <select id="durationUnit" name="durationUnit" class="block border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border pr-8">
+                                    <option value="mois">Mois</option>
+                                    <option value="semaines">Semaines</option>
+                                    <option value="jours">Jours</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                            <label for="salary" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                Rémunération
+                            </label>
+                            <div class="md:col-span-2">
+                                <div class="flex items-center gap-3">
+                                    <input type="number" id="salary" name="salary" class="block w-full border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border" placeholder="Ex: 10000">
+                                    <span class="text-gray-500">fcfa</span>
+                                    <select id="salaryPeriod" name="salaryPeriod" class="block border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border pr-8">
+                                        <option value="mois">/ mois</option>
+                                        <option value="jour">/ jour</option>
+                                        <option value="heure">/ heure</option>
+                                    </select>
+                                </div>
+                                <div class="mt-2 flex items-center">
+                                    <label class="custom-switch">
+                                        <input type="checkbox" id="negotiable" name="negotiable">
+                                        <span class="switch-slider"></span>
+                                    </label>
+                                    <span class="ml-2 text-sm text-gray-700">Rémunération négociable</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Section 2: Description -->
+                    <div class="pt-6 border-t border-gray-200">
+                        <div class="flex justify-between mb-6">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-200 text-gray-700 rounded-full mr-2">
+                                    <span>2</span>
+                                </div>
+                                <span class="font-medium">Description de l'offre</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                                <label for="description" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                    Description détaillée <span class="text-red-500">*</span>
+                                </label>
+                                <div class="md:col-span-2">
+                                    <textarea id="description" name="description" rows="6" class="block w-full border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border" placeholder="Décrivez les responsabilités, les tâches et le contexte du poste..." required></textarea>
+                                    <div class="mt-1 flex justify-between text-sm">
+                                        <p class="text-gray-500">Soyez précis et détaillé pour attirer les bons candidats.</p>
+                                        <p class="text-gray-500"><span id="charCount">0</span>/5000 caractères</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                                <label for="skills" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                    Compétences requises <span class="text-red-500">*</span>
+                                </label>
+                                <div class="md:col-span-2">
+                                    <div class="flex items-center">
+                                        <input type="text" id="skillInput" class="block w-full border-gray-300 rounded-l shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border" placeholder="Ex: JavaScript">
+                                        <button type="button" id="addSkill" class="bg-primary text-white px-4 py-3 rounded-r !rounded-button whitespace-nowrap">Ajouter</button>
+                                    </div>
+                                    <div id="skillTags" class="mt-3 flex flex-wrap">
+                                        <div class="tag">
+                                            JavaScript <span class="tag-close">×</span>
+                                        </div>
+                                        <div class="tag">
+                                            React <span class="tag-close">×</span>
+                                        </div>
+                                        <div class="tag">
+                                            Node.js <span class="tag-close">×</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                                <label for="requirements" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                    Critères et prérequis
+                                </label>
+                                <div class="md:col-span-2 space-y-3">
+                                    <div class="flex items-center">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="requirements" value="student">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span>Étudiant en formation</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="requirements" value="experience">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span>Expérience préalable requise</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="requirements" value="degree">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span>Diplôme spécifique requis</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="requirements" value="language">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span>Niveau de langue requis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Section 3: Publication -->
+                    <div class="pt-6 border-t border-gray-200">
+                        <div class="flex justify-between mb-6">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-200 text-gray-700 rounded-full mr-2">
+                                    <span>3</span>
+                                </div>
+                                <span class="font-medium">Options de publication</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                                <label for="deadline" class="block text-sm font-medium text-gray-700 md:mt-3">
+                                    Date limite de candidature
+                                </label>
+                                <div class="md:col-span-2">
+                                    <input type="date" id="deadline" name="deadline" class="block w-full border-gray-300 rounded shadow-sm focus:ring-primary focus:border-primary sm:text-sm p-3 border">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                                <label class="block text-sm font-medium text-gray-700 md:mt-3">
+                                    Visibilité de l'offre
+                                </label>
+                                <div class="md:col-span-2">
+                                    <div class="flex items-center">
+                                        <label class="custom-switch">
+                                            <input type="checkbox" id="visibility" name="visibility" checked>
+                                            <span class="switch-slider"></span>
+                                        </label>
+                                        <span class="ml-2 text-sm text-gray-700">Publier immédiatement</span>
+                                    </div>
+                                    <p class="mt-1 text-sm text-gray-500">Si désactivé, l'offre sera enregistrée comme brouillon.</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                                <label class="block text-sm font-medium text-gray-700 md:mt-3">
+                                    Notifications
+                                </label>
+                                <div class="md:col-span-2">
+                                    <div class="flex items-center">
+                                        <label class="custom-switch">
+                                            <input type="checkbox" id="notifications" name="notifications" checked>
+                                            <span class="switch-slider"></span>
+                                        </label>
+                                        <span class="ml-2 text-sm text-gray-700">Recevoir des notifications pour les nouvelles candidatures</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 flex justify-between">
+                        <button type="button" class="px-6 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary !rounded-button whitespace-nowrap">
+                            Enregistrer comme brouillon
+                        </button>
+                        <div class="flex space-x-3">
+                            <button type="button" class="px-6 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary !rounded-button whitespace-nowrap">
+                                Aperçu
+                            </button>
+                            <button type="submit" class="px-6 py-3 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary !rounded-button whitespace-nowrap">
+                                Publier l'offre
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-lg font-medium text-gray-900 mb-4">Exemples d'offres récentes</h2>
+            <div class="space-y-4">
+              <a href="Offres.html">
+                <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-medium text-gray-900">Stage Développement Web</h3>
+                            <p class="text-sm text-gray-500">TechCorp - cameroun</p>
+                        </div>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Publié</span>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600 line-clamp-2">Création d'applications web avec React et Node.js. Travail en équipe sur des projets innovants.</p>
+                    <div class="mt-3 flex flex-wrap gap-1">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">JavaScript</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">React</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">Node.js</span>
+                    </div>
+                </div>
+
+              </a>
+                <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-medium text-gray-900">Stage Énergies Renouvelables</h3>
+                            <p class="text-sm text-gray-500">GreenEnergy - Lyon</p>
+                        </div>
+                        <a href="#"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Publié</span></a>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-600 line-clamp-2">Analyse de données solaires et conception de prototypes. Participation à des projets d'innovation durable.</p>
+                    <div class="mt-3 flex flex-wrap gap-1">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">Énergies renouvelables</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">Analyse de données</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">Prototypage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script id="formInteractions">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Character counter for description
+            const descriptionField = document.getElementById('description');
+            const charCount = document.getElementById('charCount');
+            
+            descriptionField.addEventListener('input', function() {
+                const count = this.value.length;
+                charCount.textContent = count;
+                
+                if (count > 5000) {
+                    charCount.classList.add('text-red-500');
+                    charCount.classList.remove('text-gray-500');
+                } else {
+                    charCount.classList.remove('text-red-500');
+                    charCount.classList.add('text-gray-500');
+                }
+            });
+        });
+    </script>
+
+    <script id="skillTagsManagement">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Skills management
+            const skillInput = document.getElementById('skillInput');
+            const addSkillBtn = document.getElementById('addSkill');
+            const skillTags = document.getElementById('skillTags');
+            
+            // Add skill when clicking the add button
+            addSkillBtn.addEventListener('click', function() {
+                addSkill();
+            });
+            
+            // Add skill when pressing Enter in the input field
+            skillInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addSkill();
+                }
+            });
+            
+            // Function to add a skill tag
+            function addSkill() {
+                const skill = skillInput.value.trim();
+                if (skill) {
+                    const tag = document.createElement('div');
+                    tag.className = 'tag';
+                    tag.innerHTML = `${skill} <span class="tag-close">×</span>`;
+                    
+                    // Add event listener to remove tag when clicking the close button
+                    tag.querySelector('.tag-close').addEventListener('click', function() {
+                        tag.remove();
+                    });
+                    
+                    skillTags.appendChild(tag);
+                    skillInput.value = '';
+                }
+            }
+            
+            // Remove existing tags when clicking the close button
+            document.querySelectorAll('.tag-close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    this.parentElement.remove();
+                });
+            });
+        });
+    </script>
+
+    <script id="formValidation">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form validation
+            const form = document.getElementById('offerForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const title = document.getElementById('title').value;
+                const type = document.getElementById('type').value;
+                const company = document.getElementById('company').value;
+                const location = document.getElementById('location').value;
+                const description = document.getElementById('description').value;
+                
+                let isValid = true;
+                let errorMessage = '';
+                
+                if (!title) {
+                    isValid = false;
+                    errorMessage += 'Le titre de l\'offre est requis.\n';
+                }
+                
+                if (!type) {
+                    isValid = false;
+                    errorMessage += 'Le type d\'offre est requis.\n';
+                }
+                
+                if (!company) {
+                    isValid = false;
+                    errorMessage += 'Le nom de l\'entreprise est requis.\n';
+                }
+                
+                if (!location) {
+                    isValid = false;
+                    errorMessage += 'Le lieu est requis.\n';
+                }
+                
+                if (!description) {
+                    isValid = false;
+                    errorMessage += 'La description est requise.\n';
+                }
+                
+                // Check if at least one work mode is selected
+                const workModes = document.querySelectorAll('input[name="workMode"]:checked');
+                if (workModes.length === 0) {
+                    isValid = false;
+                    errorMessage += 'Au moins un mode de travail doit être sélectionné.\n';
+                }
+                
+                // Check if at least one skill is added
+                const skillTags = document.querySelectorAll('#skillTags .tag');
+                if (skillTags.length === 0) {
+                    isValid = false;
+                    errorMessage += 'Au moins une compétence requise doit être ajoutée.\n';
+                }
+                
+                if (!isValid) {
+                    alert('Veuillez corriger les erreurs suivantes :\n' + errorMessage);
+                } else {
+                    // Form is valid, submit or show success message
+                    alert('Offre publiée avec succès !');
+                    // In a real application, you would submit the form data to the server here
+                }
+            });
+        });
+    </script>
+</body>
+</html>

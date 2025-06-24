@@ -1,0 +1,84 @@
+/* Palette principale */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --background: #f8fafc;
+  --surface: #fff;
+  --border: #e5e7eb;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --success: #22c55e;
+  --danger: #ef4444;
+}
+
+main {
+  min-height: 100vh;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  background: var(--surface);
+  padding: 2.5rem 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+input[type="text"],
+input[type="file"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--background);
+  transition: border 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+input[type="file"] {
+  padding: 0.5rem 0;
+  background: none;
+}
+
+button[type="submit"] {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.85rem 0;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+
+button[type="submit"]:hover {
+  background: var(--primary-dark);
+}
+
+::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+@media (max-width: 500px) {
+  form {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+}

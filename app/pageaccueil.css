@@ -1,0 +1,53 @@
+/* === Global page settings === */
+body {
+  background: #f8f9fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Page container === */
+div {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 24px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(27, 31, 35, 0.1);
+}
+
+/* === Heading === */
+h1 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #d0d7de;
+  padding-bottom: 8px;
+}
+
+/* === Navigation list === */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 12px;
+}
+
+/* === Links === */
+a {
+  text-decoration: none;
+  color: #0969da;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 12px;
+  display: inline-block;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+a:hover {
+  background-color: #ddf4ff;
+  color: #0550ae;
+}

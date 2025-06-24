@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import "./pageaccueil.css"
 export default function Home() {
   return (
     <div>

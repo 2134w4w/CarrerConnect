@@ -25,6 +25,7 @@ export default function ConnexionEtudiant() {
       });
       const data = await res.json();
       if (res.ok) {
+        localStorage.setItem("etudiant", JSON.stringify(data.etudiant));
         setMessage("Connexion réussie !");
         setTimeout(() => {
           router.push("/page-etudiant.html");

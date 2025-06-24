@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Profile | CareerConnect</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+background-color: #f9f9f9;
+font-family: 'Inter', sans-serif;
+}
+.toggle-switch:checked {
+background-color: #4F46E5;
+}
+.toggle-switch:checked + .toggle-label {
+transform: translateX(1.5rem);
+}
+</style>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#8B5CF6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+</head>
+<body class="min-h-screen">
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-briefcase-line ri-lg"></i>
+</div>
+<a href="#" class="text-xl font-['Pacifico'] text-gray-800">CareerConnect</a>
+</div>
+<nav class="hidden md:flex items-center space-x-6">
+<a href="#" class="text-primary font-medium">Home</a>
+<a href="#" class="text-gray-600 hover:text-primary transition">Student Login</a>
+<a href="#" class="text-gray-600 hover:text-primary transition">Profile</a>
+<a href="#" class="text-gray-600 hover:text-primary transition">Information Display</a>
+</nav>
+<div class="md:hidden w-8 h-8 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 py-6">
+<div class="grid grid-cols-12 gap-6">
+<!-- Filters -->
+<aside class="col-span-3">
+<div class="bg-white rounded shadow-sm p-4">
+<h2 class="font-medium text-gray-800 mb-4">Filters</h2>
+<div class="space-y-3">
+<label class="flex items-center gap-2">
+<input type="checkbox" class="rounded border-gray-300">
+<span class="text-gray-700">Full-Time</span>
+</label>
+<label class="flex items-center gap-2">
+<input type="checkbox" class="rounded border-gray-300">
+<span class="text-gray-700">Part-Time</span>
+</label>
+<label class="flex items-center gap-2">
+<input type="checkbox" class="rounded border-gray-300">
+<span class="text-gray-700">Remote</span>
+</label>
+</div>
+</div>
+</aside>
+<!-- Job Listings -->
+<div class="col-span-6">
+<div class="bg-white rounded shadow-sm p-4">
+<h2 class="font-medium text-gray-800 mb-4">Job Postings</h2>
+<div class="space-y-6">
+<div class="border rounded p-4">
+<h3 class="text-lg font-medium text-gray-800">Software Engineer</h3>
+<p class="text-sm text-gray-600 mb-2">Tech Innovators</p>
+<p class="text-gray-700 mb-4">Develop and implement web software applications. Opportunity to work with cutting-edge technologies.</p>
+<button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 transition whitespace-nowrap">Apply Now</button>
+</div>
+<div class="border rounded p-4">
+<h3 class="text-lg font-medium text-gray-800">Environmental Consultant</h3>
+<p class="text-sm text-gray-600 mb-2">Green Energy Solutions</p>
+<p class="text-gray-700 mb-4">Provide expert guidance on environmental projects and policy implementation.</p>
+<button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 transition whitespace-nowrap">Apply Now</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Company Profiles & Messages -->
+<aside class="col-span-3">
+<div class="bg-white rounded shadow-sm p-4 mb-6">
+<h2 class="font-medium text-gray-800 mb-4">Company Profiles</h2>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gray-100 rounded flex items-center justify-center">
+<i class="ri-building-line text-gray-600"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">Tech Innovators</p>
+<p class="text-sm text-gray-600">Leading in tech</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded shadow-sm p-4">
+<h2 class="font-medium text-gray-800 mb-4">Messages</h2>
+<div class="text-sm text-gray-600">
+You have 2 new messages from Tech Energy Group
+</div>
+</div>
+</aside>
+</div>
+<div class="p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<div class="w-24 h-24 bg-gray-100 border border-gray-200 rounded flex items-center justify-center">
+<i class="ri-user-line ri-3x text-gray-400"></i>
+</div>
+<div>
+</section>
+<!-- Experience -->
+<section class="bg-white rounded shadow-sm mb-6">
+<div class="p-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-semibold text-gray-800">Experience</h2>
+<button class="p-2 text-gray-500 hover:text-primary rounded-full transition">
+<i class="ri-add-line ri-lg"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
+<i class="ri-google-fill ri-lg text-gray-600"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-800">Software Engineering Intern</h3>
+<p class="text-gray-600">Google, Mountain View</p>
+<p class="text-sm text-gray-500">Jun 2024 - Aug 2024</p>
+<p class="mt-2 text-gray-700">Worked on the development of internal tools using React and Node.js. Collaborated with senior engineers to implement new features and fix bugs.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
+<i class="ri-building-4-line ri-lg text-gray-600"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-800">Research Assistant</h3>
+<p class="text-gray-600">University AI Lab</p>
+<p class="text-sm text-gray-500">Sep 2023 - Present</p>
+<p class="mt-2 text-gray-700">Assisting faculty with research in natural language processing. Implementing machine learning models and analyzing results.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-gray-50">
+
+            <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full mb-6">
+                    <i class="ri-building-line text-2xl text-secondary"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">creation d'offre</h3>
+                <p class="text-gray-600 mb-6" href="creeroffre.html">
+                    creer une offre de recrutement ou de stage pour etudiant.
+                </p>
+                <a href="creeroffre.html" class="w-full">
+                    <button class="w-full px-6 py-3 text-white bg-secondary hover:bg-secondary/90 font-medium !rounded-button">
+                      Commencer maintenant
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<footer class="bg-gray-50 border-t border-gray-200 py-8">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="flex items-center gap-2 mb-4 md:mb-0">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-briefcase-line ri-lg"></i>
+</div>
+<span class="text-xl font-['Pacifico'] text-gray-800">CareerConnect</span>
+</div>
+<div class="flex gap-6">
+<a href="#" class="text-gray-600 hover:text-primary transition">Privacy Policy</a>
+<a href="#" class="text-gray-600 hover:text-primary transition">Terms of Service</a>
+<a href="#" class="text-gray-600 hover:text-primary transition">Help Center</a>
+</div>
+</div>
+<div class="mt-6 text-center text-gray-500 text-sm">
+© 2025 CareerConnect. All rights reserved.
+</div>
+</div>
+</footer>
+<script id="toggle-script">
+document.addEventListener('DOMContentLoaded', function() {
+const toggles = document.querySelectorAll('.toggle-switch');
+toggles.forEach(toggle => {
+toggle.addEventListener('change', function() {
+const label = this.nextElementSibling.querySelector('.toggle-label');
+if (this.checked) {
+label.style.transform = 'translateX(1.5rem)';
+this.nextElementSibling.classList.add('bg-primary');
+this.nextElementSibling.classList.remove('bg-gray-300');
+} else {
+label.style.transform = 'translateX(0)';
+this.nextElementSibling.classList.remove('bg-primary');
+this.nextElementSibling.classList.add('bg-gray-300');
+}
+});
+});
+});
+</script>
+</body>
+</html>

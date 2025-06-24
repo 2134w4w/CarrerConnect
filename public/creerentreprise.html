@@ -1,0 +1,476 @@
+1<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer votre profil professionnel</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .map-container {
+            background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="text-2xl font-['Pacifico'] text-primary">carrerconnect</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-600 hover:text-gray-900 flex items-center">
+                    <span class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-question-line ri-lg"></i>
+                    </span>
+                    <span class="ml-1">Aide</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Créer votre profil professionnel</h1>
+            <p class="text-gray-600">Complétez les informations ci-dessous pour personnaliser votre profil d'entreprise.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-sm mb-8 p-6">
+            <div class="flex items-center justify-between mb-8">
+                <div class="w-full max-w-3xl mx-auto">
+                    <div class="relative">
+                        <div class="flex items-center justify-between w-full">
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+                                    <span>1</span>
+                                </div>
+                                <span class="text-sm mt-2 text-primary font-medium">Entreprise</span>
+                            </div>
+                            <div class="flex-1 h-1 bg-gray-200 mx-2">
+                                <div class="h-1 bg-primary" style="width: 100%;"></div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+                                    <span>2</span>
+                                </div>
+                                <span class="text-sm mt-2 text-primary font-medium">Intérêts</span>
+                            </div>
+                            <div class="flex-1 h-1 bg-gray-200 mx-2">
+                                <div class="h-1 bg-primary" style="width: 100%;"></div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+                                    <span>3</span>
+                                </div>
+                                <span class="text-sm mt-2 text-primary font-medium">Localisation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form id="profileForm">
+                <div id="step1" class="step-content">
+                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Informations de l'entreprise</h2>
+                    
+                    <div class="mb-6">
+                        <label for="companyName" class="block text-sm font-medium text-gray-700 mb-1">Nom de l'entreprise</label>
+                        <div class="relative">
+                            <input type="text" id="companyName" name="companyName" value="TECHCORP" class="w-full px-4 py-3 border-gray-300 border rounded-button focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition" placeholder="Entrez le nom de votre entreprise">
+                            <div class="absolute right-3 top-3 text-green-500 hidden" id="companyNameValid">
+                                <span class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-check-line ri-lg"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-1">Ce nom sera visible sur votre profil public</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="industry" class="block text-sm font-medium text-gray-700 mb-1">Domaine d'activité</label>
+                        <div class="relative">
+                            <div class="relative">
+                                <button type="button" id="industryButton" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-button text-left focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary flex justify-between items-center">
+                                    <span id="selectedIndustry">Technologie et développement logiciel</span>
+                                    <span class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </span>
+                                </button>
+                                <div id="industryDropdown" class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                                    <ul class="py-1 max-h-60 overflow-y-auto">
+                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-primary font-medium">Technologie et développement logiciel</li>
+                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Finance et assurance</li>
+                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Santé et médical</li>
+                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Éducation et formation</li>
+                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Commerce et distribution</li>
+                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Industrie manufacturière</li>
+                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Services professionnels</li>
+                                        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Médias et communication</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="website" class="block text-sm font-medium text-gray-700 mb-1">Site web</label>
+                        <div class="relative">
+                            <input type="url" id="website" name="website" value="https://techcorp.com" class="w-full px-4 py-3 border-gray-300 border rounded-button focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition" placeholder="https://votre-site.com">
+                            <div class="absolute right-3 top-3 text-green-500" id="websiteValid">
+                                <span class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-check-line ri-lg"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-1">Format: https://example.com</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description de l'entreprise</label>
+                        <textarea id="description" name="description" rows="4" class="w-full px-4 py-3 border-gray-300 border rounded-button focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition" placeholder="Décrivez votre entreprise en quelques phrases...">TECHCORP est une entreprise innovante spécialisée dans le développement de solutions logicielles basées sur l'intelligence artificielle. Nous créons des technologies qui aident les entreprises à optimiser leurs processus tout en respectant des principes de développement durable.</textarea>
+                        <div class="flex justify-between mt-1">
+                            <p class="text-sm text-gray-500">Soyez concis et précis</p>
+                            <p class="text-sm text-gray-500"><span id="charCount">198</span>/300 caractères</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step2" class="step-content hidden">
+                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Centres d'intérêt</h2>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Sélectionnez vos centres d'intérêt (max. 5)</label>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <button type="button" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium flex items-center whitespace-nowrap">
+                                Innovation
+                                <span class="ml-1 w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-close-line"></i>
+                                </span>
+                            </button>
+                            <button type="button" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium flex items-center whitespace-nowrap">
+                                IA
+                                <span class="ml-1 w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-close-line"></i>
+                                </span>
+                            </button>
+                            <button type="button" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium flex items-center whitespace-nowrap">
+                                Développement durable
+                                <span class="ml-1 w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-close-line"></i>
+                                </span>
+                            </button>
+                            <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition whitespace-nowrap">
+                                Cloud Computing
+                            </button>
+                            <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition whitespace-nowrap">
+                                Cybersécurité
+                            </button>
+                            <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition whitespace-nowrap">
+                                Big Data
+                            </button>
+                            <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition whitespace-nowrap">
+                                Blockchain
+                            </button>
+                            <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition whitespace-nowrap">
+                                IoT
+                            </button>
+                        </div>
+                        
+                        <div class="relative">
+                            <input type="text" id="customInterest" class="w-full px-4 py-3 border-gray-300 border rounded-button focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition" placeholder="Ajouter un centre d'intérêt personnalisé">
+                            <button type="button" class="absolute right-2 top-2 px-3 py-1 bg-primary text-white rounded-button text-sm font-medium whitespace-nowrap">
+                                Ajouter
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">Vous avez sélectionné <span class="font-medium">3</span> sur 5 centres d'intérêt possibles</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-medium mb-3 text-gray-800">Suggestions basées sur votre domaine</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary hover:shadow-sm transition cursor-pointer">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                                        <span class="w-6 h-6 flex items-center justify-center">
+                                            <i class="ri-code-s-slash-line"></i>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-900">Développement Web</h4>
+                                        <p class="text-sm text-gray-600">Frontend, Backend, Full-stack</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg p-4 hover:border-primary hover:shadow-sm transition cursor-pointer">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                                        <span class="w-6 h-6 flex items-center justify-center">
+                                            <i class="ri-database-2-line"></i>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-900">DevOps</h4>
+                                        <p class="text-sm text-gray-600">CI/CD, Automatisation, Cloud</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step3" class="step-content hidden">
+                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Localisation</h2>
+                    
+                    <div class="mb-6">
+                        <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Adresse</label>
+                        <div class="relative">
+                            <input type="text" id="address" name="address" class="w-full pl-10 pr-4 py-3 border-gray-300 border rounded-button focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition" placeholder="Rechercher une adresse...">
+                            <div class="absolute left-3 top-3 text-gray-400">
+                                <span class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-search-line"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="map-container w-full h-80 rounded-lg overflow-hidden"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Ville</label>
+                            <input type="text" id="city" name="city" value="Douala" class="w-full px-4 py-3 border-gray-300 border rounded-button focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label for="postalCode" class="block text-sm font-medium text-gray-700 mb-1">Code postal</label>
+                            <input type="text" id="postalCode" name="postalCode" value="10171" class="w-full px-4 py-3 border-gray-300 border rounded-button focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Pays</label>
+                        <div class="relative">
+                            <button type="button" id="countryButton" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-button text-left focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary flex justify-between items-center">
+                                <span id="selectedCountry">cameroun</span>
+                                <span class="w-5 h-5 flex items-center justify-center">
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </span>
+                            </button>
+                            <div id="countryDropdown" class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                                <ul class="py-1 max-h-60 overflow-y-auto">
+                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Belgique</li>
+                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">cameroun</li>
+                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">nigeria</li>
+                                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">tchad</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center">
+                            <div class="w-5 h-5 relative mr-2">
+                                <input type="checkbox" id="visibilityCheck" class="peer absolute w-0 h-0 opacity-0">
+                                <label for="visibilityCheck" class="block w-5 h-5 rounded border border-gray-300 peer-checked:bg-primary peer-checked:border-primary cursor-pointer"></label>
+                                <span class="absolute top-0 left-0 w-5 h-5 text-white flex items-center justify-center pointer-events-none opacity-0 peer-checked:opacity-100">
+                                    <i class="ri-check-line ri-sm"></i>
+                                </span>
+                            </div>
+                            <label for="visibilityCheck" class="text-sm text-gray-700 cursor-pointer">Rendre mon adresse visible sur mon profil public</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-8 pt-6 border-t border-gray-200">
+                    <button type="button" id="prevBtn" class="px-6 py-3 border border-gray-300 rounded-button text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition whitespace-nowrap hidden">
+                        <span class="flex items-center">
+                            <span class="w-5 h-5 mr-1 flex items-center justify-center">
+                                <i class="ri-arrow-left-s-line"></i>
+                            </span>
+                            Précédent
+                        </span>
+                    </button>
+                    <div></div>
+                    <button type="button" id="nextBtn" class="px-6 py-3 bg-primary text-white rounded-button font-medium hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition whitespace-nowrap">
+                        <span class="flex items-center">
+                            Suivant
+                            <span class="w-5 h-5 ml-1 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line"></i>
+                            </span>
+                        </span>
+                    </button>
+                    <button type="submit" id="submitBtn" class="px-6 py-3 bg-primary text-white rounded-button font-medium hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition whitespace-nowrap hidden">
+                        <span class="flex items-center">
+                            Terminer
+                            <span class="w-5 h-5 ml-1 flex items-center justify-center">
+                                <i class="ri-check-line"></i>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script id="formNavigation">
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = ['step1', 'step2', 'step3'];
+            let currentStep = 0;
+            
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.addEventListener('click', function() {
+                window.location.href = './consulter-entreprise.html';
+            });
+            function showStep(stepIndex) {
+                steps.forEach((step, index) => {
+                    const stepElement = document.getElementById(step);
+                    if (index === stepIndex) {
+                        stepElement.classList.remove('hidden');
+                    } else {
+                        stepElement.classList.add('hidden');
+                    }
+                });
+                
+                // Update buttons
+                if (stepIndex === 0) {
+                    prevBtn.classList.add('hidden');
+                } else {
+                    prevBtn.classList.remove('hidden');
+                }
+                
+                if (stepIndex === steps.length - 1) {
+                    nextBtn.classList.add('hidden');
+                    submitBtn.classList.remove('hidden');
+                } else {
+                    nextBtn.classList.remove('hidden');
+                    submitBtn.classList.add('hidden');
+                }
+            }
+            
+            prevBtn.addEventListener('click', function() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            });
+            
+            document.getElementById('profileForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Profil créé avec succès !');
+                // Redirect or show success message
+            });
+            
+            // Initialize
+            showStep(currentStep);
+        });
+    </script>
+
+    <script id="formValidation">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Company name validation
+            const companyNameInput = document.getElementById('companyName');
+            const companyNameValid = document.getElementById('companyNameValid');
+            
+            companyNameInput.addEventListener('input', function() {
+                if (this.value.length > 2) {
+                    companyNameValid.classList.remove('hidden');
+                } else {
+                    companyNameValid.classList.add('hidden');
+                }
+            });
+            
+            // Trigger validation on load for pre-filled fields
+            if (companyNameInput.value.length > 2) {
+                companyNameValid.classList.remove('hidden');
+            }
+            
+            // Character counter for description
+            const descriptionInput = document.getElementById('description');
+            const charCount = document.getElementById('charCount');
+            
+            descriptionInput.addEventListener('input', function() {
+                const count = this.value.length;
+                charCount.textContent = count;
+                
+                if (count > 300) {
+                    this.value = this.value.substring(0, 300);
+                    charCount.textContent = 300;
+                }
+            });
+            
+            // Set initial count
+            charCount.textContent = descriptionInput.value.length;
+        });
+    </script>
+
+    <script id="dropdownHandlers">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Industry dropdown
+            const industryButton = document.getElementById('industryButton');
+            const industryDropdown = document.getElementById('industryDropdown');
+            const selectedIndustry = document.getElementById('selectedIndustry');
+            
+            industryButton.addEventListener('click', function() {
+                industryDropdown.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('#industryDropdown li').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectedIndustry.textContent = this.textContent;
+                    industryDropdown.classList.add('hidden');
+                });
+            });
+            
+            // Country dropdown
+            const countryButton = document.getElementById('countryButton');
+            const countryDropdown = document.getElementById('countryDropdown');
+            const selectedCountry = document.getElementById('selectedCountry');
+            
+            countryButton.addEventListener('click', function() {
+                countryDropdown.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('#countryDropdown li').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectedCountry.textContent = this.textContent;
+                    countryDropdown.classList.add('hidden');
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!industryButton.contains(event.target) && !industryDropdown.contains(event.target)) {
+                    industryDropdown.classList.add('hidden');
+                }
+                
+                if (!countryButton.contains(event.target) && !countryDropdown.contains(event.target)) {
+                    countryDropdown.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
